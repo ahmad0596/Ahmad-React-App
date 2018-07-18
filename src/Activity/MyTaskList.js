@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MyTask from './MyTask';
 import AddTask from './AddTask';
-import { Header, Icon } from 'semantic-ui-react';
+import { Grid } from "semantic-ui-react";
 
 class MyTaskList extends Component {
 	constructor(props) {
@@ -27,8 +27,18 @@ class MyTaskList extends Component {
   render() {
     return (
       <div>
-		<AddTask addTask={this.addTask}/>
-		{this.renderTasks()}
+      	<Grid>
+      		<Grid.Row>
+      			<Grid.Column>
+					<AddTask addTask={this.addTask}/>
+				</Grid.Column>
+			</Grid.Row>
+			<Grid.Row>
+      			<Grid.Column>
+					{this.renderTasks()}
+				</Grid.Column>
+			</Grid.Row>
+		</Grid>
       </div>
     );
   }

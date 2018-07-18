@@ -1,16 +1,28 @@
 import React, { Component } from "react";
+import { Button, Grid } from "semantic-ui-react";
 import Title from "../Template/Title";
+import CountByOne from "./CountByOne";
 
 class CounterPage extends Component{
 	constructor(props) {
       super(props);
-      this.state = {};
-    }
+    };
 
 	render(){
 		return(
 			<div>
-				<Title name="Counter" desc="Never lose count"/> 
+				<Grid container centered>
+					<Grid.Row>
+						<Grid.Column>
+							<Title name="Counter" desc="Never lose count"/>
+						</Grid.Column>
+					</Grid.Row>
+					<Grid.Row>
+						<Grid.Column>
+							<CountByOne />
+						</Grid.Column>
+					</Grid.Row>
+				</Grid>
 		    </div>
 		);
 	}

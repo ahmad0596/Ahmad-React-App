@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Button, Grid, Label } from 'semantic-ui-react';
+import { Header, Button, Grid, Label, Segment } from 'semantic-ui-react';
 
 class MyTask extends Component {
   constructor(props) {
@@ -17,20 +17,24 @@ class MyTask extends Component {
   render() {
     return (
       <div>
-        <Grid columns={3}>
+        <Grid container textAlign='center' verticalAlign='middle' celled>
           <Grid.Row>
             <Grid.Column>
-              <Button className="deleteButton" color='red' circular icon='delete' onClick={this.removeTask}></Button>
+              <Label attached="top" color={this.state.statusColor}>{this.state.status}</Label>
             </Grid.Column>
-            <Grid.Column>
-            <Label color={this.state.statusColor} attached='top'>{this.state.status}</Label>
-              <Header as='h3'>
-                {this.props.task}
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Button className="completeButton" onClick={this.complete}>Complete!</Button>
-            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row columns={3}>
+              <Grid.Column>
+                <Button className="deleteButton" color='red' circular icon='delete' onClick={this.removeTask}></Button>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h3'>
+                  {this.props.task}
+                </Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Button compact onClick={this.complete}>Done</Button>
+              </Grid.Column>
           </Grid.Row>
         </Grid>
       </div>

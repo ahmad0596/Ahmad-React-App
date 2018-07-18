@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Title from "../Template/Title";
 import MyTaskList from "./MyTaskList";
+import { Grid } from "semantic-ui-react";
  
 class ActivityPage extends Component {
   constructor(props) {
@@ -11,8 +12,18 @@ class ActivityPage extends Component {
   render(){
     return(
       <div>
-        <Title name="Activity" desc="Keep track of your tasks"/> 
-        <MyTaskList />
+        <Grid container centered>
+          <Grid.Row>
+              <Grid.Column>
+                <Title name="Activity" desc="Keep track of your tasks"/> 
+              </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+              <Grid.Column>
+                <MyTaskList />
+              </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }

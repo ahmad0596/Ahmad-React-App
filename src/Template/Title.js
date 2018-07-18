@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { Header, Grid } from "semantic-ui-react";
 
 function Title(props){
 	return (
 		<div>
-			<Grid>
+			<Grid container>
 	      		<Grid.Row>
 	      			<Grid.Column textAlign='center'>
 						<Header as='h1'>

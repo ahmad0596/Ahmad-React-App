@@ -18,12 +18,12 @@ class AddTask extends Component {
 	render() {
     	return (
 	      <div>
-	      	<Grid>
+	      	<Grid container>
 	      		<Grid.Row>
 	      			<Grid.Column textAlign='center'>
 	      				<Input placeholder='Enter Task' onChange={this.handleUpdate} value={this.state.newTask}>
 	      				<input />
-	      				<Button onClick={this.addTask} >Add Task</Button>
+	      				<Button compact onClick={this.addTask} >Add Task</Button>
 	      				</Input>
 	      			</Grid.Column>
 	      		</Grid.Row>
