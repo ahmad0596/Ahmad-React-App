@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import Title from "../Template/Title";
 import CountByOne from "./CountByOne";
 

@@ -56,13 +56,13 @@ class countByOne extends Component{
   					</Grid.Row>
   					<Grid.Row columns={3}>
             <Grid.Column>
-              <Button onClick={this.reset}>Reset</Button>
+              <Button compact onClick={this.reset}>Reset</Button>
             </Grid.Column>
             <Grid.Column>
-              <Button onClick={this.dec}>-1</Button>
+              <Button compact onClick={this.dec}>-1</Button>
             </Grid.Column>
             <Grid.Column>
-              <Button onClick={this.inc}>+1</Button>
+              <Button compact onClick={this.inc}>+1</Button>
             </Grid.Column>
           </Grid.Row>
 				</Grid>
