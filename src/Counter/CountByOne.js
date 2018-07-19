@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Grid, Progress, Input } from "semantic-ui-react";
+import { Button, Grid, Progress } from "semantic-ui-react";
 
 class countByOne extends Component{
 	constructor(props) {

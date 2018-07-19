@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Header, Button, Grid, Label, Segment } from 'semantic-ui-react';
+import { Header, Button, Grid, Label } from 'semantic-ui-react';
 
 class MyTask extends Component {
   constructor(props) {
