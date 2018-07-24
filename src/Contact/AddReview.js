@@ -6,32 +6,49 @@ class AddReview extends Component {
 	constructor(props) {
       super(props);
       this.state = {
-      	myReview:''
+      	review:'',
+      	date:''
       };
       this.handleChange = this.handleChange.bind(this);
+      this.addMessage = this.addMessage.bind(this);
     }
 
     handleChange(e, { value, name }) {
-    	this.setState({
-    		[name]: value
-    	});
-	}
+    	var d = new Date();
+	    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+	    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+	    var newDate = days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() +", " + d.getFullYear()
+	    
+	    this.setState({
+	      [name]: value,
+	      date: newDate
+	    });
+	}
+  
 	addMessage(e, name){
 		e.preventDefault();
-	    fire.database().ref('messages').push( this.state.myReview );
-	    this.setState({ [name]: '' });
+	    const reviewRef = fire.database().ref('reviews');
+	    const item = {
+	      review: this.state.review,
+	      date: this.state.date
+	    }
+	    reviewRef.push(item);
+	    this.setState({
+	      review: '',
+	      date:''
+	    });
 	}
 
 	render() {
     	return (
 	      <div>
-	      	<Grid container>
+	      	<Grid container centered>
 	      		<Grid.Row>
 	      			<Grid.Column textAlign='center'>
-	      				<Form onSubmit={this.addMessage.bind(this)}>
+	      				<Form onSubmit={this.addMessage}>
 						    <Form.Group>
-								<Form.Input name="myReview" type="text" ref={ el => this.inputMsg = el } value={this.state.myReview} placeholder='Enter a Review' onChange={this.handleChange}/>
+								<Form.Input name="review" type="text" value={this.state.review} placeholder='Enter a Review' onChange={this.handleChange}/>
 								<Form.Button content='Submit' />
 							</Form.Group>
 						</Form>

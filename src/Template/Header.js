@@ -25,6 +25,9 @@ class Header extends Component {
 				<NavLink to="/contact">
 					<Menu.Item name='contact' active={activeItem === 'contact'} onClick={this.handleItemClick} />
 				</NavLink>
+				<NavLink to="/admin">
+					<Menu.Item name='admin' active={activeItem === 'admin'} onClick={this.handleItemClick} />
+				</NavLink>
 			</Menu>
         </div>
     )

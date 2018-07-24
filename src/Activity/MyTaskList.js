@@ -27,7 +27,7 @@ class MyTaskList extends Component {
   render() {
     return (
       <div>
-      	<Grid>
+      	<Grid centered>
       		<Grid.Row>
       			<Grid.Column>
 					<AddTask addTask={this.addTask}/>

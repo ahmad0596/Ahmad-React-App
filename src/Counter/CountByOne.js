@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Grid, Progress } from "semantic-ui-react";
+import { Form, Button, Grid, Progress } from "semantic-ui-react";
 
 class countByOne extends Component{
 	constructor(props) {
@@ -11,12 +11,12 @@ class countByOne extends Component{
       this.inc = this.inc.bind(this);
       this.dec = this.dec.bind(this);
       this.reset = this.reset.bind(this);
-      this.updateMax = this.updateMax.bind(this);
+      this.handleUpdate = this.handleUpdate.bind(this);
     }
 
     inc(){
     	this.setState({
-    		count: this.state.count >= this.state.max ? 0 : this.state.count + 1
+    		count: this.state.count >= this.state.max ? this.state.max : this.state.count + 1
     	});
     }
     dec(){
@@ -29,9 +29,10 @@ class countByOne extends Component{
     		count: 0
     	})
     }
-    updateMax(event){
+    handleUpdate(event){
       this.setState({
-        max: parseInt(event.target.value)
+        max: parseInt(event.target.value),
+        count: 0
       })
     }
 
@@ -39,16 +40,15 @@ class countByOne extends Component{
     	return(
     		<div>
     			<Grid container textAlign='center' celled>
-            {/*
             <Grid.Row>
               <Grid.Column>
-                <Input placeholder='Count up to...?' onChange={this.handleUpdate}>
-                <input />
-                <Button compact onClick={this.updateMax} >New Max</Button>
-                </Input>
+                <Form onSubmit={this.updateMax}>
+                  <Form.Group>
+                    <Form.Input type="number" placeholder='Enter Max (Default: 10)' onChange={this.handleUpdate}/>
+                  </Form.Group>
+                </Form>
               </Grid.Column>
             </Grid.Row>
-            */}
       			<Grid.Row>
       				<Grid.Column>
                 <Progress size='large' indicating progress='value' value={this.state.count} total={this.state.max} />

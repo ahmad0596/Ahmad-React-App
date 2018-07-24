@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Input, Grid } from 'semantic-ui-react';
+import { Form, Input, Grid } from 'semantic-ui-react';
 
 class AddTask extends Component {
 	constructor(props) {
@@ -18,13 +18,15 @@ class AddTask extends Component {
 	render() {
     	return (
 	      <div>
-	      	<Grid container>
+	      	<Grid container centered>
 	      		<Grid.Row>
 	      			<Grid.Column textAlign='center'>
-	      				<Input placeholder='Enter Task' onChange={this.handleUpdate} value={this.state.newTask}>
-	      				<input />
-	      				<Button compact onClick={this.addTask} >Add Task</Button>
-	      				</Input>
+	      				<Form onSubmit={this.addTask}>
+		                  <Form.Group>
+		                    <Form.Input placeholder='Enter Task' onChange={this.handleUpdate} value={this.state.newTask}/>
+		                    <Form.Button content='Add Task' />
+		                  </Form.Group>
+		                </Form>
 	      			</Grid.Column>
 	      		</Grid.Row>
 	      	</Grid>

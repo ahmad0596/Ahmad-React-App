@@ -5,36 +5,47 @@ import { Grid, Feed } from "semantic-ui-react";
 class ReviewList extends Component {
   constructor(props) {
       super(props);
-      this.state = { messages:[]};
+      this.state = { allReviews:[]};
     }
 
-  componentWillMount(){
-    let messagesRef = fire.database().ref('messages').orderByKey().limitToLast(100);
-    messagesRef.on('child_added', snapshot => {
-      let message = { text: snapshot.val(), id: snapshot.key  };
-      this.setState({ messages: [message].concat(this.state.messages)});
-    })
+  componentDidMount() {
+    const reviewsRef = fire.database().ref('reviews').orderByKey().limitToLast(100);
+    reviewsRef.on('value', (snapshot) => {
+      let reviews = snapshot.val();
+      let newState = [];
+      for (let item in reviews) {
+        newState.push({
+          id: item,
+          review: reviews[item].review,
+          date: reviews[item].date
+        });
+      }
+      this.setState({
+        allReviews: newState
+      });
+    });
   }
 
   render(){
     return(
       <div>
 	      <Grid container celled centered textAlign="center">
-			<Grid.Row>
-				<Grid.Column>
-					<Feed>
-						{
-					    	this.state.messages.map( message =>
-								<Feed.Event>
-									<Feed.Label icon='pencil' />
-									<Feed.Content key={message.id} date="date?" summary={message.text} />
-								</Feed.Event>
-							)
-						}
-					</Feed>
-				</Grid.Column>
-			</Grid.Row>
-		  </Grid>
+    			<Grid.Row>
+    				<Grid.Column>
+            <h1>Reviews</h1>
+    					<Feed>
+    						{
+    					    this.state.allReviews.map( item =>
+    								<Feed.Event>
+    									<Feed.Label icon='pencil' />
+    									<Feed.Content key={item.id} date={item.date} summary={item.review} />
+    								</Feed.Event>
+    							)
+    						}
+    					</Feed>
+    				</Grid.Column>
+    			</Grid.Row>
+    		</Grid>
       </div>
     );
   }

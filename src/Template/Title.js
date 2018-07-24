@@ -9,7 +9,7 @@ function Title(props){
 	      			<Grid.Column textAlign='center'>
 						<Header as='h1'>
 							<Header.Content>
-			      				{props.name} Page
+			      				{props.name}
 			      				<Header.Subheader>
 			      					{props.desc}
 			      				</Header.Subheader>
