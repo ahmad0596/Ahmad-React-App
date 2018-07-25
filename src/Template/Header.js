@@ -1,38 +1,51 @@
 import React, { Component } from 'react';
-import { NavLink } from "react-router-dom";
+
+import { Link } from "react-router-dom";
+
 import { Menu } from "semantic-ui-react";
 
-
 class Header extends Component {
-		
-	state = { activeItem: 'home' }
-	handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  /*
+    constructor(props) {
+        super(props);
+        this.state = { 
+          mainPages:['/', '/activity', '/counter'],
+          activeItem: 'home'
+        };
+
+        this.handleClick = this.handleClick.bind(this);
+      }
+
+      handleClick(e, { name }){
+          this.setState({
+            activeItem: name
+          })
+      }
+  */
+    
+  state = {
+    activeItem: '',
+    mainPages:['/activity', '/counter', '/contact', 'admin']
+  }
+
+  handleClick = (e, { name }) => this.setState({
+    activeItem: name
+  })
 
   render() {
-  	const { activeItem } = this.state
+    const { activeItem, mainPages } = this.state
     return (
-    	<div>
-	        <Menu color="black" inverted>
-				<NavLink to="/">
-					<Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick}/>
-				</NavLink>
-				<NavLink to="/activity">
-					<Menu.Item name='activity' active={activeItem === 'activity'} onClick={this.handleItemClick} />
-				</NavLink>
-				<NavLink to="/counter">
-					<Menu.Item name='counter' active={activeItem === 'counter'} onClick={this.handleItemClick} />
-				</NavLink>
-				<NavLink to="/contact">
-					<Menu.Item name='contact' active={activeItem === 'contact'} onClick={this.handleItemClick} />
-				</NavLink>
-				<NavLink to="/admin">
-					<Menu.Item name='admin' active={activeItem === 'admin'} onClick={this.handleItemClick} />
-				</NavLink>
-			</Menu>
-        </div>
+      <div>
+        <Menu color="black" inverted>
+          {
+            mainPages.map(page => (
+              <Menu.Item as={Link} to={page} name={page} active={activeItem === page} onClick={this.handleClick}/>
+            ))
+          }
+        </Menu>
+      </div>
     )
   }
 }
-
 export default Header;
 
