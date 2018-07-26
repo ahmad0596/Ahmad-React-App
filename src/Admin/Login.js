@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+
 import { BrowserRouter, Route, Link, Redirect, withRouter } from "react-router-dom";
-import AdminControl from "./AdminControl"
-import { Grid, Input, Form, Button } from "semantic-ui-react"
+
+import { Grid, Input, Form, Button, Header } from "semantic-ui-react";
+
+import AdminControl from "./AdminControl";
 
 const AuthExample = () => (
   <BrowserRouter>
@@ -25,48 +28,45 @@ const fakeAuth = {
   }
 };
 
-const AuthButton = withRouter(
-  ({ history }) =>
-    fakeAuth.isAuthenticated ? (
-      <Grid container centered>
-        <Grid.Row>
-            <Grid.Column>
-            Welcome!{" "}
-              <Button
-          onClick={() => {
-            fakeAuth.signout(() => history.push("/"));
-          }}
-        >Sign out</Button>
-            </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    ) : (
-      <Grid container centered>
-        <Grid.Row>
-            <Grid.Column>
-              You are not logged in and cannot view Admin Page
-            </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    )
+const AuthButton = withRouter( 
+  ({ history }) => fakeAuth.isAuthenticated
+  ?
+  (
+    <Grid>
+      <Grid.Column>
+        <Header as='h3'>
+          <Header.Content>Welcome Admin!</Header.Content>
+          <Button content="Sign out" color='red' onClick={() => { fakeAuth.signout(() => history.push("/")); }} />
+        </Header>
+      </Grid.Column>
+    </Grid>
+  )
+  : 
+  (
+    <Grid>
+      <Grid.Column>
+        <Header as='h1' content='You are not logged in and cannot view the Admin Page' />
+      </Grid.Column>
+    </Grid>
+  )
 );
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      fakeAuth.isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: "/login",
-            state: { from: props.location }
-          }}
-        />
-      )
-    }
-  />
+  <Route {...rest} render={ props => fakeAuth.isAuthenticated
+    ?
+    (
+      <Component {...props} />
+    )
+    :
+    (
+      <Redirect
+        to={{
+          pathname: "/login",
+          state: { from: props.location }
+        }}
+      />
+    )
+  } />
 );
 
 class Login extends Component {
@@ -77,15 +77,16 @@ class Login extends Component {
       pass:'password',
       redirectToReferrer: false
     };
+
     this.handleUpdate = this.handleUpdate.bind(this);
     this.login = this.login.bind(this);
   }
 
-  login = () => {
-    fakeAuth.authenticate(() => {
-      if(this.state.input === this.state.pass){
+  login = () => { fakeAuth.authenticate(() => {
+      if(this.state.input === this.state.pass) {
         this.setState({ redirectToReferrer: true });
-      }else{
+      }
+      else {
         this.setState({ input: '' });
         alert("Wrong Password");
       }
@@ -93,7 +94,7 @@ class Login extends Component {
   };
 
   handleUpdate(event) {
-      this.setState({ input: event.target.value });
+    this.setState({ input: event.target.value });
   }
 
   render() {
@@ -106,7 +107,7 @@ class Login extends Component {
 
     return (
       <div>
-        <Grid container centered>
+        <Grid>
           <Grid.Row>
               <Grid.Column>
                 <Form onSubmit={this.login}>
@@ -122,5 +123,4 @@ class Login extends Component {
     );
   }
 }
-
 export default AuthExample;

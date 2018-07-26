@@ -17,9 +17,11 @@ class countByOne extends Component{
   }
 
   inc() {
-    this.setState({
-      count: this.state.count >= this.state.max ? this.state.max : this.state.count + 1
-    });
+    if(this.state.count < this.state.max){
+      this.setState({
+        count: this.state.count + 1
+      });
+    }
   }
 
   dec() {
@@ -54,7 +56,7 @@ class countByOne extends Component{
             <Grid.Column>
               <Form onSubmit={this.updateMax}>
                 <Form.Group>
-                  <Form.Input type="number" placeholder='Enter Max (Default: 10)' onChange={this.handleUpdate}/>
+                  <Form.Input type="number" placeholder='Enter Max(default: 10)' onChange={this.handleUpdate}/>
                 </Form.Group>
               </Form>
             </Grid.Column>

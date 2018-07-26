@@ -41,10 +41,10 @@ class ReviewList extends Component {
             <Header as='h1' content='Reviews' />
             <Feed>
               {
-                this.state.allReviews.map( item =>
+                this.state.allReviews.map( aRev =>
                   <Feed.Event>
                     <Feed.Label icon='pencil' />
-                    <Feed.Content key={item.id} date={item.date} summary={item.review} />
+                    <Feed.Content key={aRev.id} date={aRev.date} summary={aRev.review} />
                   </Feed.Event>
                 )
               }

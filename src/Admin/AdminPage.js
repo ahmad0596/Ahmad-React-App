@@ -1,26 +1,30 @@
 import React, { Component } from "react";
+
+import  { Grid } from "semantic-ui-react";
+
 import Title from "../Template/Title";
 import Login from "./Login";
-import  { Grid } from "semantic-ui-react";
+
  
 class AdminPage extends Component {
   constructor(props) {
-      super(props);
-    }
+    super(props);
+    this.state = { };
+  }
 
   render(){
     return(
       <div>
-        <Grid container centered>
+        <Grid>
           <Grid.Row>
-              <Grid.Column>
-                <Title name="Admin" desc="Manage your site"/> 
-              </Grid.Column>
+            <Grid.Column>
+              <Title name="Admin" desc="Manage your site"/> 
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-              <Grid.Column>
-                <Login />
-              </Grid.Column>
+            <Grid.Column>
+              <Login />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </div>

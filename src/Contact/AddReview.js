@@ -8,8 +8,7 @@ class AddReview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      review:'',
-      date:''
+      review:''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,32 +16,31 @@ class AddReview extends Component {
   }
 
   handleChange(e, { value, name }) {
-    var d = new Date();
-    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-    var newDate = days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() +", " + d.getFullYear()
-    
     this.setState({
-      [name]: value,
-      date: newDate
+      [name]: value
     });
   }
   
   addMessage(e){
     e.preventDefault();
+
+    var d = new Date();
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    var newDate = days[d.getDay()] + ", " + months[d.getMonth()] + " " + d.getDate() +", " + d.getFullYear();
+
     const reviewRef = fire.database().ref('reviews');
 
     const item = {
       review: this.state.review,
-      date: this.state.date
+      date: newDate
     }
 
     reviewRef.push(item);
 
     this.setState({
-      review: '',
-      date:''
+      review: ''
     });
   }
 
