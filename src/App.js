@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { BrowserRouter } from "react-router-dom";
 
-import { Grid, Container } from 'semantic-ui-react';
+import { Grid, Container, Divider } from 'semantic-ui-react';
 
 import Header from "./Template/Header";
 import Routes from "./Template/Routes";
@@ -17,13 +17,15 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-              <Grid container>
-                <Grid.Row>
-                  <Grid.Column>
-                      <Routes />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
+            <Divider hidden />
+            <Grid container>
+              <Grid.Row>
+                <Grid.Column>
+                    <Routes />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+            <Divider hidden />
             <Footer />
           </div>
         </BrowserRouter>

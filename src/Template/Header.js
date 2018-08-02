@@ -25,7 +25,28 @@ class Header extends Component {
     
   state = {
     activeItem: '',
-    mainPages:['/activity', '/counter', '/contact', 'admin']
+    mainPages:[
+      {
+        route:'/',
+        name: 'Home'
+      },
+      {
+        route:'/activity',
+        name: 'Activity'
+      }, 
+      {
+        route:'/counter',
+        name: 'Counter'
+      }, 
+      {
+        route:'/contact',
+        name: 'Contact'
+      }, 
+      {
+        route:'/admin',
+        name: 'Admin'
+      }
+    ]
   }
 
   handleClick = (e, { name }) => this.setState({
@@ -39,7 +60,7 @@ class Header extends Component {
         <Menu color="black" inverted>
           {
             mainPages.map(page => (
-              <Menu.Item as={Link} to={page} name={page} active={activeItem === page} onClick={this.handleClick}/>
+              <Menu.Item as={Link} to={page.route} name={page.name} active={activeItem === page.route} onClick={this.handleClick}/>
             ))
           }
         </Menu>
