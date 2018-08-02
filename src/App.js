@@ -15,25 +15,17 @@ class App extends Component {
     return (
       <div>
         <BrowserRouter>
-          <Grid Container>
-            <Grid.Row>
-              <Grid.Column>
-                 <Header />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <Container>
-                  <Routes />
-                </Container>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <Footer />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+          <div>
+            <Header />
+              <Grid container>
+                <Grid.Row>
+                  <Grid.Column>
+                      <Routes />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            <Footer />
+          </div>
         </BrowserRouter>
       </div>
     );
