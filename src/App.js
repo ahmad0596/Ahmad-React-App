@@ -8,8 +8,6 @@ import Header from "./Template/Header";
 import Routes from "./Template/Routes";
 import Footer from "./Template/Footer";
 
-
-
 class App extends Component {
   render() {
     return (
