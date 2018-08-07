@@ -15,21 +15,21 @@ class ContactPage extends Component {
           name:'Cell',
           image: 'http://cdn.onlinewebfonts.com/svg/img_302325.png',
           desc: 'This is our Cell Contact',
-          link: '/cell',
+          link: '/contact/about/1',
           lastUpdated:'1/01/16'
         },
         {
           name:'Email',
           image: 'http://www.pngonly.com/wp-content/uploads/2017/06/Email-PNG-Picture.png',
           desc: 'This is our Email Contact',
-          link: '/email',
+          link: '/contact/about/2',
           lastUpdated:'6/21/14'
         },
         {
           name:'Mail',
           image: 'https://upload.wikimedia.org/wikipedia/commons/4/48/You%27ve_got_mail.png',
           desc: 'This is our Mail Contact',
-          link: '/mail',
+          link: '/contact/about/3',
           lastUpdated:'2/13/11'
         }
       ]
@@ -39,7 +39,7 @@ class ContactPage extends Component {
   render(){
     return(
       <div>
-        <Grid>
+        <Grid fluid padded>
           <Grid.Row>
             <Grid.Column>
               <Title name="About" desc="Learn about Us"/> 
