@@ -7,8 +7,8 @@ import DetailedAboutPage from './aboutDetail/DetailedAboutPage'
 // depending on the full pathname
 const Roster = () => (
   <Switch>
-    <Route exact path='/about' component={AboutPage}/>
-    <Route path='/about/:number' component={DetailedAboutPage}/>
+    <Route exact path='/contact/about' component={AboutPage}/>
+    <Route path='/contact/about/:number' component={DetailedAboutPage}/>
   </Switch>
 )
 

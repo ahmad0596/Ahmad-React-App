@@ -7,7 +7,7 @@ const PageAPI = {
   all: function() { return this.pages},
   get: function(id) {
     const isPage = p => p.number === id
-    return this.Pages.find(isPage)
+    return this.pages.find(isPage)
   }
 }
 

@@ -13,7 +13,7 @@ const DetailedAboutPage = (props) => {
     <div>
       <h1>{page.name} (#{page.number})</h1>
       <h2>Position: {page.data}</h2>
-      <Link to='/roster'>Back</Link>
+      <Link to='/contact/about'>Back</Link>
     </div>
   )
 }
