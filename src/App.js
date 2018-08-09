@@ -16,7 +16,7 @@ class App extends Component {
           <div>
             <Header />
             <Divider hidden />
-            <Grid container>
+            <Grid Container>
               <Grid.Row>
                 <Grid.Column>
                     <Routes />

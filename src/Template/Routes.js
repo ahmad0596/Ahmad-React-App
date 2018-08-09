@@ -6,7 +6,8 @@ import Home from "../Home/HomePage";
 import Activity from "../Activity/ActivityPage";
 import Counter from "../Counter/CounterPage";
 import Contact from "../Contact/ContactPage";
-import About from "../Contact/About/AboutPage";
+import About from "../Contact/About/About";
+import DetailedAboutPage from "../Contact/About/aboutDetail/DetailedAboutPage";
 import Admin from "../Admin/AdminPage";
 
 class Routes extends Component {
@@ -18,7 +19,8 @@ class Routes extends Component {
           <Route exact path="/activity" component={Activity}/>
           <Route exact path="/counter" component={Counter}/>
           <Route exact path="/contact" component={Contact}/>
-            <Route exact path="/contact/about" component={About} />
+            <Route path="/contact/about" component={About} />
+            
           <Route exact path="/admin" component={Admin}/>
           <Route component={Home}/>
         </Switch>
